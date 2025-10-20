@@ -15,6 +15,8 @@ An insert statement is used to load the data from staging into the raw tables
 */
 
 ---- manual insert into the the bronzer layer erp 
+
+Truncate table bronze.erp_cust_az12;
 insert into bronze.erp_cust_az12
 select 
     $1 AS CID, 
@@ -24,6 +26,7 @@ from @erp_sources/CUST_AZ12.csv
 (file_format => ingestion_file);
 
 
+Truncate table bronze.erp_loc_a101;
 insert into bronze.erp_loc_a101
 select 
   $1 CID, 
@@ -31,6 +34,7 @@ select
 from @erp_sources/LOC_A101.csv
 (file_format => ingestion_file);
 
+Truncate table bronze.erp_px_cat_g1v2;
 insert into bronze.erp_px_cat_g1v2
 select 
     $1 as ID, 
@@ -42,7 +46,7 @@ from @erp_sources/PX_CAT_G1V2.csv
 
 
 -- manual insert in the the bronxer layer from crm source system 
-
+Truncate table bronze.crm_customer_info;
 insert into bronze.crm_customer_info
 select 
     $1 AS cst_id, 
@@ -55,7 +59,7 @@ select
 from @crm_source/cust_info.csv
 (file_format => ingestion_file);
 
-
+Truncate table bronze.crm_product_info
 insert into bronze.crm_product_info
 select 
     $1 as prd_id, 
@@ -68,6 +72,8 @@ select
 from @crm_source/prd_info.csv
 (file_format => ingestion_file);
 
+
+Truncate table bronze.crm_sales_details;
 insert into bronze.crm_sales_details
 select 
     $1 as sls_ord_num, 
