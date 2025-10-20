@@ -1,21 +1,18 @@
 /*
 
+================================================================================
+DDL SCripts: Load data into Bronze Tables
 
+================================================================================
 
+Objective:
+          To insert data into the tables in the bronze layer.
 
+To simplify the prcoess, staging are was created for the data sources in bronze.
+An insert statement is used to load the data from staging into the raw tables
 
-
-
-
+=================================================================================
 */
-
-
-
-
-
-
-
-
 
 ---- manual insert into the the bronzer layer erp 
 insert into bronze.erp_cust_az12
